@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05070c">
+<meta name="description" content="道教兔子洞冰山图：从《道德经》到《女青鬼律》，八层深潜，每一层都有词条、解释与可核对的原文／词典证据链接。">
+<title>道教兔子洞冰山图 · 八层深潜</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,6 78,40 66,94 34,94 22,40' fill='%237fd6ff'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="depthhud" id="depthHud" aria-hidden="true">
+  <i id="hudDot"></i>
+  <b id="hudMeter">0 m</b>
+  <span id="hudName">浅滩</span>
+</div>
+
+<header class="topbar" id="topbar">
+  <div class="topbar__row">
+    <div class="brand">
+      <svg class="brand__mark" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,4 76,38 64,96 36,96 24,38" fill="none" stroke="currentColor" stroke-width="4"/>
+        <line x1="12" y1="34" x2="88" y2="34" stroke="currentColor" stroke-width="3" stroke-dasharray="6 6"/>
+      </svg>
+      <div class="brand__text">
+        <b>道教兔子洞冰山图</b>
+        <span>DAOIST RABBIT HOLE ICEBERG</span>
+      </div>
+    </div>
+    <button class="iconbtn" id="searchToggle" aria-label="搜索" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <div class="searchwrap" id="searchwrap" hidden>
+    <input id="search" type="search" inputmode="search" placeholder="搜词条、解释、关键词…  例：尸解 / 庚申 / 鬼律" autocomplete="off">
+    <button class="searchwrap__clear" id="searchClear" aria-label="清空">×</button>
+  </div>
+
+  <div class="filters" id="filters" aria-label="分类筛选"></div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <p class="hero__kicker">中文 · 道教 · 八层</p>
+    <h1 class="hero__title">道教兔子洞冰山图</h1>
+    <p class="hero__lede">
+      海面之上是《道德经》与三清，越往下，是守庚申的夜、尸解的替身、女青鬼律的条文、
+      以及一整套替鬼魂与死人准备的官僚系统。每一条词条都附上可点开的解释与
+      <em>原文／词典出处</em>，你可以一路核对到最深处。
+    </p>
+    <div class="hero__stats">
+      <div><b id="statEntries">—</b><span>词条</span></div>
+      <div><b>8</b><span>层级</span></div>
+      <div><b id="statRead">0</b><span>已读</span></div>
+    </div>
+    <div class="hero__actions">
+      <button class="btn btn--primary" id="diveBtn">随机下潜（第 6–8 层）</button>
+      <button class="btn" id="resetBtn">清除进度</button>
+    </div>
+  </section>
+
+  <section class="profile" aria-label="冰山剖面">
+    <div class="profile__head">
+      <h2>剖面</h2>
+      <p>点任一层跳转 · 越深越冷门</p>
+    </div>
+    <div class="profile__body">
+      <svg id="profileSvg" viewBox="0 0 320 260" role="img" aria-label="冰山分层剖面图"></svg>
+      <ol class="profile__legend" id="profileLegend"></ol>
+    </div>
+    <div class="profile__depth" aria-hidden="true"><span>0 m</span><span>−11 000 m</span></div>
+  </section>
+
+  <div id="tiers"></div>
+
+  <section class="about">
+    <h2>读法</h2>
+    <p>
+      「层级」只表示<strong>进入门槛</strong>：越往下，越依赖专门文献、越少被常识覆盖，
+      不代表价值高低。图中不少条目属于<strong>历史上的信仰实践</strong>，其中的巫术、诅咒、
+      血祭、蛊毒等内容仅作宗教史与民俗学叙述，本站不复述操作细节，也不构成任何建议。
+    </p>
+    <p>
+      证据链接分三类：<span class="tag tag--text">原文</span>（古籍、道经、大藏经）、
+      <span class="tag tag--dict">辞典</span>（汉典等字词训释）、
+      <span class="tag tag--ref">参考</span>（学术百科、研究机构）。链接在浏览器新标签页中打开。
+    </p>
+    <p class="about__fine">
+      资料出处以《道藏》经目、《云笈七签》《抱朴子》等原典与传统训释为主；
+      口传性极强、缺乏文本的民俗条目，会明确标注为「民间说法」。
+      若某条链接失效，属于网络存档问题，可依书名自行检索。
+    </p>
+  </section>
+
+  <footer class="foot">
+    <p>道教兔子洞冰山图 · 本地版 · 共 <span id="footCount">—</span> 条</p>
+    <p class="foot__fine">仿「中文兔子洞冰山图」体例制作。纯静态页面，可离线打开。</p>
+  </footer>
+</main>
+
+<!-- 详情面板 -->
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet__scrim" data-close></div>
+  <article class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet__grip" data-close></div>
+    <div class="sheet__scroll" id="sheetScroll">
+      <header class="sheet__head">
+        <div class="sheet__meta">
+          <span class="tierbadge" id="sheetTier">T1</span>
+          <span class="catbadge" id="sheetCat">经典</span>
+          <span class="readmark" id="sheetRead">未读</span>
+        </div>
+        <h2 id="sheetTitle">—</h2>
+        <p class="sheet__aka" id="sheetAka"></p>
+      </header>
+
+      <p class="sheet__brief" id="sheetBrief"></p>
+      <div class="sheet__detail" id="sheetDetail"></div>
+
+      <section class="ev">
+        <h3>证据 / 出处</h3>
+        <ul id="sheetEv"></ul>
+      </section>
+
+      <section class="rel" id="sheetRelWrap">
+        <h3>同一片水域</h3>
+        <div class="rel__list" id="sheetRel"></div>
+      </section>
+
+      <div class="sheet__foot">
+        <button class="btn" id="prevBtn">← 上一条</button>
+        <button class="btn btn--primary" id="readBtn">标记已读</button>
+        <button class="btn" id="nextBtn">下一条 →</button>
+      </div>
+    </div>
+    <button class="sheet__close" data-close aria-label="关闭">×</button>
+  </article>
+</div>
+
+<script src="js/data/tiers.js"></script>
+<script src="js/data/tier1.js"></script>
+<script src="js/data/tier2.js"></script>
+<script src="js/data/tier3.js"></script>
+<script src="js/data/tier4.js"></script>
+<script src="js/data/tier5.js"></script>
+<script src="js/data/tier6.js"></script>
+<script src="js/data/tier7.js"></script>
+<script src="js/data/tier8.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
